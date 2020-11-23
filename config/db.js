@@ -1,17 +1,12 @@
-// const mongoose = require('mongoose');
 import mongoose from 'mongoose';
-
-const dbURL = process.env.MONGODB_URL
-
-const getDbConnection = async () => {
+const chalk = require('chalk');
+export const getDbConnection = async (dbURL) => {
+    console.log(chalk.yellow('Initiating connection with db....'))
     try {
-        await mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true });
-        console.log('Connected to mongodb.')
+         await mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true });
+        console.log(chalk.green('Connected to mongodb.'))
     } catch (error) {
         console.log({error})
     }
    
 }
-
-getDbConnection().then(res => {
-})
