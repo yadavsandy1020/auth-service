@@ -1,9 +1,8 @@
 import express from 'express';
-import { check, validationResult } from 'express-validator';
-import { hash, genSalt, compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
+import { check } from 'express-validator';
+import {signupHandler} from './handlers'
 
-const router = express.Router();
+export const router = express.Router();
 
 router.post("/signup",
     [
@@ -16,4 +15,7 @@ router.post("/signup",
             .isLength({ min: 6 })
 
 
-    ])
+    ], signupHandler)
+
+
+    module.exports = router;

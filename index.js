@@ -2,8 +2,9 @@ import { getDbConnection } from "./config/db";
 import express from 'express';
 const bodyParser = require('body-parser');
 
+const user = require('./routes/user')
 //ENV config init..
-import {config  } from "dotenv";
+import { config } from "dotenv";
 config()
 
 const chalk = require('chalk');
@@ -15,7 +16,7 @@ const app = express();
 
 //Middleware
 app.use(bodyParser.json());
-
+app.use('/user', user)
 app.get('/', (req, res) => {
     console.log('API is working!..');
     return res.json({ greetings: 'API is working!' })
